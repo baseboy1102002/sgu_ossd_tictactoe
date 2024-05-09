@@ -120,7 +120,7 @@ window.configure(background = '#47bf75')
 tops = Frame(window, bg ='#47bf75', pady =2, width = 1350, height=100, relief = RIDGE)
 tops.grid(row=0, column =0)
 
-lblTitle = Label(tops, font=('arial',50,'bold'),text="Ca rô 3x3", bd=21,
+lblTitle = Label(tops, font=('arial',50,'bold'),text="SGU Tictactoe", bd=21,
                  bg='#47bf75',fg='Cornsilk',justify = CENTER)
 lblTitle.grid(row=0,column = 0)
 
