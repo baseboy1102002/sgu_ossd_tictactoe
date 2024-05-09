@@ -8,7 +8,7 @@ from tkinter import messagebox
 from tkinter import simpledialog
 
 
-serverAddress = '192.168.200.4'
+serverAddress = '172.16.0.2'
 port = 8000
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -75,7 +75,7 @@ def acceptConnection():
     global clientSocket,clientAddress,start
     clientSocket,clientAddress = serverSocket.accept()
     message = "Incoming play request from "+str(clientAddress)+" client?"
-    answer = messagebox.askyesno("Question",message)
+    answer = messagebox.askyesno("Match done!",message)
     if answer:
         sendData = '{}'.format("accepted").encode()
         clientSocket.send(sendData)

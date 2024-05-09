@@ -268,7 +268,7 @@ def play():
     if finish:
         board.recordGamePlayed()
         matchOver()
-        answer = messagebox.askyesno("Question","Do you want to play again?")
+        answer = messagebox.askyesno("Match done!","Do you want to play again?")
         if answer:
             sendData = '{}'.format("Play Again").encode()
             connectionSocket.send(sendData)
