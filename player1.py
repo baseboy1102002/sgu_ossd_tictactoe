@@ -8,7 +8,7 @@ from tkinter import messagebox
 from tkinter import simpledialog
 
 
-serverAddress = '192.168.2.11'
+serverAddress = '192.168.200.4'
 port = 8000
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -102,30 +102,30 @@ createThread(receiveMove)
 window=Tk()
 window.title("TiC-Tac-Toe Player1")
 window.geometry("920x650+0+0")
-window.configure(background = 'Cadet Blue')
+window.configure(background = '#47bf75')
 
-tops = Frame(window, bg ='Cadet Blue', pady =2, width = 1350, height=100, relief = RIDGE)
+tops = Frame(window, bg ='#47bf75', pady =2, width = 1350, height=100, relief = RIDGE)
 tops.grid(row=0, column =0)
 
-lblTitle = Label(tops, font=('arial',50,'bold'),text="Tic Tac Toe Game", bd=21, bg='Cadet Blue',fg='Cornsilk',justify = CENTER)
+lblTitle = Label(tops, font=('arial',50,'bold'),text="Tic Tac Toe Game", bd=21, bg='#47bf75',fg='Cornsilk',justify = CENTER)
 lblTitle.grid(row=0,column = 0)
 
 mainFrame = Frame (window, bg = 'Powder Blue', bd=10,width = 1350, height=600, relief=RIDGE) 
 mainFrame.grid(row=1,column=0)
 
-leftFrame = Frame (mainFrame ,bd=10, width =750, height=500, pady=2, padx=10, bg="Cadet Blue", relief=RIDGE)
+leftFrame = Frame (mainFrame ,bd=10, width =750, height=500, pady=2, padx=10, bg="#47bf75", relief=RIDGE)
 leftFrame.pack(side=LEFT)
 
-rightFrame = Frame (mainFrame,bd=10, width =560, height=500, padx=10, pady=2, bg="Cadet Blue", relief=RIDGE)
+rightFrame = Frame (mainFrame,bd=10, width =560, height=500, padx=10, pady=2, bg="#47bf75", relief=RIDGE)
 rightFrame.pack(side=RIGHT)
 
-rightFrame1=Frame(rightFrame ,bd=10, width=560, height=200, padx=10, pady=2, bg="Cadet Blue", relief=RIDGE) 
+rightFrame1=Frame(rightFrame ,bd=10, width=560, height=200, padx=10, pady=2, bg="#47bf75", relief=RIDGE) 
 rightFrame1.grid(row=0, column=0)
 
-rightFrame2 = Frame(rightFrame,bd=10, width =560, height=250, padx=10, pady=2, bg="Cadet Blue", relief=RIDGE)
+rightFrame2 = Frame(rightFrame,bd=10, width =560, height=250, padx=10, pady=2, bg="#47bf75", relief=RIDGE)
 rightFrame2.grid(row=1,column=0)
 
-rightFrame3=Frame(rightFrame ,bd=10, width=560, height=150, padx=10, pady=2, bg="Cadet Blue", relief=RIDGE) 
+rightFrame3=Frame(rightFrame ,bd=10, width=560, height=150, padx=10, pady=2, bg="#47bf75", relief=RIDGE) 
 rightFrame3.grid(row=2, column=0)
 
 
@@ -316,53 +316,53 @@ def updateBoard():
         btn9["text"]="X"
 
 
-btn1 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked1)
+btn1 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked1)
 btn1.grid(column=1, row=1, sticky = S+N+E+W)
-btn2 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked2)
+btn2 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked2)
 btn2.grid(column=2, row=1, sticky = S+N+E+W)
-btn3 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked3)
+btn3 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked3)
 btn3.grid(column=3, row=1, sticky = S+N+E+W)
-btn4 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked4)
+btn4 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked4)
 btn4.grid(column=1, row=2, sticky = S+N+E+W)
-btn5 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked5)
+btn5 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked5)
 btn5.grid(column=2, row=2, sticky = S+N+E+W)
-btn6 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked6)
+btn6 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked6)
 btn6.grid(column=3, row=2, sticky = S+N+E+W)
-btn7 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked7)
+btn7 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked7)
 btn7.grid(column=1, row=3, sticky = S+N+E+W)
-btn8 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked8)
+btn8 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked8)
 btn8.grid(column=2, row=3, sticky = S+N+E+W)
-btn9 = Button(leftFrame, text=" ",bg="yellow", fg="Black",width=8,height=3,font=('Times', 26),command=clicked9)
+btn9 = Button(leftFrame, text=" ",bg="#d6fff8", fg="Black",width=8,height=3,font=('Times', 26),command=clicked9)
 btn9.grid(column=3, row=3, sticky = S+N+E+W)
 
 
 btnQuit=Button (rightFrame3, text="Quit", font=('arial', 20, 'bold'), height = 1, width =15,command = clickQuit) 
 btnQuit.grid(row=2, column=1 ,padx=6, pady=10)
 
-lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Games:",padx=2, pady=2, bg="Cadet Blue") 
+lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Games:",padx=2, pady=2, bg="#47bf75") 
 lbl.grid (row=0, column=0, sticky=W)
-lblGames=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="Cadet Blue",width=8) 
+lblGames=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="#47bf75",width=8) 
 lblGames.grid (row=0, column=1, sticky=W)
-lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Won:",padx=2, pady=2, bg="Cadet Blue") 
+lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Won:",padx=2, pady=2, bg="#47bf75") 
 lbl.grid (row=1, column=0, sticky=W)
-lblWon=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="Cadet Blue",width=8) 
+lblWon=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="#47bf75",width=8) 
 lblWon.grid (row=1, column=1, sticky=W)
-lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Lost:",padx=2, pady=2, bg="Cadet Blue") 
+lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Lost:",padx=2, pady=2, bg="#47bf75") 
 lbl.grid (row=2, column=0, sticky=W)
-lblLost=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="Cadet Blue",width=8) 
+lblLost=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="#47bf75",width=8) 
 lblLost.grid (row=2, column=1, sticky=W)
-lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Ties:",padx=2, pady=2, bg="Cadet Blue") 
+lbl=Label(rightFrame2, font=('arial', 20, 'bold'), text="Ties:",padx=2, pady=2, bg="#47bf75") 
 lbl.grid (row=3, column=0, sticky=W)
-lblTies=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="Cadet Blue",width=8) 
+lblTies=Label(rightFrame2, font=('arial', 20, 'bold'), text=" ",padx=2, pady=2, bg="#47bf75",width=8) 
 lblTies.grid (row=3, column=1, sticky=W)
 
-lbl=Label(rightFrame1, font=('arial', 20, 'bold'), text="Host:",padx=2, pady=2, bg="Cadet Blue") 
+lbl=Label(rightFrame1, font=('arial', 20, 'bold'), text="Host:",padx=2, pady=2, bg="#47bf75") 
 lbl.grid (row=0, column=0, sticky=W)
-lblUsername=Label(rightFrame1, font=('arial', 20, 'bold'), text="player1",padx=2, pady=2, bg="Cadet Blue",width=10) 
+lblUsername=Label(rightFrame1, font=('arial', 20, 'bold'), text="player1",padx=2, pady=2, bg="#47bf75",width=10) 
 lblUsername.grid (row=0, column=1, sticky=W)
-lbl=Label(rightFrame1, font=('arial', 20, 'bold'), text="Turn: ",padx=2, pady=2, bg="Cadet Blue") 
+lbl=Label(rightFrame1, font=('arial', 20, 'bold'), text="Turn: ",padx=2, pady=2, bg="#47bf75") 
 lbl.grid (row=1, column=0, sticky=W)
-lblTurn=Label(rightFrame1, font=('arial', 20, 'bold'), text="opponent",padx=2, pady=2, bg="Cadet Blue",width=10) 
+lblTurn=Label(rightFrame1, font=('arial', 20, 'bold'), text="opponent",padx=2, pady=2, bg="#47bf75",width=10) 
 lblTurn.grid (row=1, column=1, sticky=W)
 
 player1Name = simpledialog.askstring("Input", "Enter your name?",parent=window)
