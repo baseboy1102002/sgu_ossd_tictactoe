@@ -5,6 +5,7 @@ import gameboard as gb
 
 from tkinter import *
 from tkinter import messagebox
+from tkinter import simpledialog
 
 
 serverAddress = '192.168.2.11'
@@ -18,6 +19,7 @@ clientSocket,clientAddress = None,None
 
 start = False
 user = False
+player1Name = ""
 player2 = ""
 board = None
 pos = 0
@@ -34,11 +36,11 @@ def receive():
         if start and not user:
             try:
                 data,addr = clientSocket.recvfrom(1024)
-                name = data.decode()
+                player2Name = data.decode()
                 print(data)
-                board = gb.Board(name)
-                player2 = name
-                sendData = '{}'.format("player1").encode()
+                board = gb.Board(player1Name, player2Name)
+                player2 = player2Name
+                sendData = '{}'.format(player1Name).encode()
                 clientSocket.send(sendData)
                 user = True
             except:
@@ -97,7 +99,6 @@ def clickQuit():
 createThread(acceptConnection)
 createThread(receiveMove)
 
-
 window=Tk()
 window.title("TiC-Tac-Toe Player1")
 window.geometry("920x650+0+0")
@@ -133,7 +134,7 @@ def clicked1():
     if start and user and btn1["text"]==" ":
         if board.lastMove == player2:
             btn1["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("0",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(0,board.lastMove)
@@ -146,7 +147,7 @@ def clicked2():
     if start and user and btn2["text"]==" ":
         if board.lastMove == player2:
             btn2["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("1",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(1,board.lastMove)
@@ -159,7 +160,7 @@ def clicked3():
     if start and user and btn3["text"]==" ":
         if board.lastMove == player2:
             btn3["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("2",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(2,board.lastMove)
@@ -172,7 +173,7 @@ def clicked4():
     if start and user and btn4["text"]==" ":
         if board.lastMove == player2:
             btn4["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("3",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(3,board.lastMove)
@@ -185,7 +186,7 @@ def clicked5():
     if start and user and btn5["text"]==" ":
         if board.lastMove == player2:
             btn5["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("4",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(4,board.lastMove)
@@ -198,7 +199,7 @@ def clicked6():
     if start and user and btn6["text"]==" ":
         if board.lastMove == player2:
             btn6["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("5",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(5,board.lastMove)
@@ -211,7 +212,7 @@ def clicked7():
     if start and user and btn7["text"]==" ":
         if board.lastMove == player2:
             btn7["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("6",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(6,board.lastMove)
@@ -224,7 +225,7 @@ def clicked8():
     if start and user and btn8["text"]==" ":
         if board.lastMove == player2:
             btn8["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("7",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(7,board.lastMove)
@@ -237,7 +238,7 @@ def clicked9():
     if start and user and btn9["text"]==" ":
         if board.lastMove == player2:
             btn9["text"]="O"
-            board.lastMove = "player1"
+            board.lastMove = player1Name
             sendData = '{}-{}'.format("8",board.lastMove).encode()
             clientSocket.send(sendData)
             board.playMoveOnBoard(8,board.lastMove)
@@ -252,12 +253,21 @@ def play():
         board.recordGamePlayed()
         board.resetGameBoard()
         board.lastMove = "player1"
+        matchOver()
         
 def gameOver():
     start = False
     user = False
     clientSocket.close()
-    board.numGames = board.numGames - 1
+    comData = board.computeStats()
+    lblGames["text"] = comData["numGames"]
+    lblWon["text"] = comData["wins"]["O"]
+    lblLost["text"] = comData["loss"]["O"]
+    lblTies["text"] = comData["ties"]
+    lblTurn["text"] = "opponent"
+    reset()
+
+def matchOver():
     comData = board.computeStats()
     lblGames["text"] = comData["numGames"]
     lblWon["text"] = comData["wins"]["O"]
@@ -355,4 +365,6 @@ lbl.grid (row=1, column=0, sticky=W)
 lblTurn=Label(rightFrame1, font=('arial', 20, 'bold'), text="opponent",padx=2, pady=2, bg="Cadet Blue",width=10) 
 lblTurn.grid (row=1, column=1, sticky=W)
 
+player1Name = simpledialog.askstring("Input", "Enter your name?",parent=window)
+lblUsername["text"] = player1Name
 window.mainloop()
