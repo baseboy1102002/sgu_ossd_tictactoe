@@ -18,7 +18,7 @@ player1 = ""
 board = None
 pos = 0
 finish = False
-username = ""
+player2Name = ""
 isCon = False
 close = False
 
@@ -48,7 +48,7 @@ def receiveMove():
         
 
 def receive():
-    global start,user,board,username,player1,connectionSocket,isCon,close
+    global start,user,board,player2Name,player1,connectionSocket,isCon,close
     while True:
         if isCon:
             if (not start or not user):
@@ -59,16 +59,17 @@ def receive():
                     isCon = True
                     connectionSocket.close()
                 elif data == "accepted":
-                    username = simpledialog.askstring("Input", "Enter your name?",parent=window)
-                    sendData = '{}'.format(username).encode()
+                    player2Name = simpledialog.askstring("Input", "Enter your name?",parent=window)
+                    sendData = '{}'.format(player2Name).encode()
                     connectionSocket.send(sendData)
-                    lblUsername["text"] = username
+                    lblUsername["text"] = player2Name
                     print(sendData)
                     start = True   
                     close = False            
-                elif data == "player1": 
-                    player1 = data              
-                    board = gb.Board(username)
+                else: 
+                    player1 = data
+                    player1Name = data
+                    board = gb.Board(player1Name,player2Name)
                     board.lastMove = player1
                     user = True
                     break
@@ -148,7 +149,7 @@ def clicked1():
     if start and user and btn1["text"]==" ":
         if board.lastMove == player1:
             btn1["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("0",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(0,board.lastMove)
@@ -161,7 +162,7 @@ def clicked2():
     if start and user and btn2["text"]==" ":
         if board.lastMove == player1:
             btn2["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("1",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(1,board.lastMove)
@@ -174,7 +175,7 @@ def clicked3():
     if start and user and btn3["text"]==" ":
         if board.lastMove == player1:
             btn3["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("2",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(2,board.lastMove)
@@ -187,7 +188,7 @@ def clicked4():
     if start and user and btn4["text"]==" ":
         if board.lastMove == player1:
             btn4["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("3",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(3,board.lastMove)
@@ -200,7 +201,7 @@ def clicked5():
     if start and user and btn5["text"]==" ":
         if board.lastMove == player1:
             btn5["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("4",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(4,board.lastMove)
@@ -213,7 +214,7 @@ def clicked6():
     if start and user and btn6["text"]==" ":
         if board.lastMove == player1:
             btn6["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("5",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(5,board.lastMove)
@@ -226,7 +227,7 @@ def clicked7():
     if start and user and btn7["text"]==" ":
         if board.lastMove == player1:
             btn7["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("6",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(6,board.lastMove)
@@ -239,7 +240,7 @@ def clicked8():
     if start and user and btn8["text"]==" ":
         if board.lastMove == player1:
             btn8["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("7",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(7,board.lastMove)
@@ -252,7 +253,7 @@ def clicked9():
     if start and user and btn9["text"]==" ":
         if board.lastMove == player1:
             btn9["text"]="X"
-            board.lastMove = username
+            board.lastMove = player2Name
             sendData = '{}-{}'.format("8",board.lastMove).encode()
             connectionSocket.send(sendData)
             board.playMoveOnBoard(8,board.lastMove)
@@ -265,6 +266,8 @@ def play():
     global isCon,start,user,close
     finish = board.isGameFinished()
     if finish:
+        board.recordGamePlayed()
+        matchOver()
         answer = messagebox.askyesno("Question","Do you want to play again?")
         if answer:
             sendData = '{}'.format("Play Again").encode()
@@ -279,14 +282,16 @@ def play():
             start = False
             user = False
             close = True
-            comData = board.computeStats()
-            lblGames["text"] = comData["numGames"]
-            lblWon["text"] = comData["wins"]["X"]
-            lblLost["text"] = comData["loss"]["X"]
-            lblTies["text"] = comData["ties"]
-            lblTurn["text"] = "You"
-            reset()
+            matchOver()
             
+def matchOver():
+    comData = board.computeStats()
+    lblGames["text"] = comData["numGames"]
+    lblWon["text"] = comData["wins"]["X"]
+    lblLost["text"] = comData["loss"]["X"]
+    lblTies["text"] = comData["ties"]
+    lblTurn["text"] = "You"
+    reset()
 
 def reset():
     board.resetGameBoard()
