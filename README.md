@@ -1,73 +1,71 @@
-# Welcome to our mini project!
+# Welcome to our project!
 
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
+Hi! We're student in major Information Technology at Sai Gon University. This is our project about building a Tic tac toe game that run on Desktop using Python.
 
-## Create files and folders
 
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
+## Introduction website
 
-## Switch to another file
+This is our introduction's website, you can find more about our team members, and have a contact to us in the future . [visit here](https://baseboy1102002.github.io/sgu_ossd_tictactoe-web/)
 
-` funtion addNum(a,b)`
+## Download & Install Guild
 
-## Server (player1)
+> You can download the game and install in 2 ways: via Git or just download the source code.
+
+### Requirements
+Your local machine must have pre install Python3. You can download Python in [official site](https://www.python.org/downloads/)
+
+### Download the game
+
+- Download via Git
 
 ```
 git clone https://github.com/baseboy1102002/sgu_ossd_tictactoe.git
+```
+
+- Download the source code
+
+Our official release: [v.1.0](https://github.com/baseboy1102002/sgu_ossd_tictactoe/releases/tag/v1.0) 
+
+### Install and run the game
+> This project has 2 file you can run according to 2 player mode. The Server (for player1) and the Client (for player2).
+
+#### Run the Server (player1)
+> Before you can play, it need to set the IP Address correct to your IPv4 in the file player1.py. Find this line and replace the value to your value. 
+> `serverAddress = 'YOUR_IPv4_ADDRESS`
+
+- On Windows
+```
+cd ~/{YOUR_PATH_TO_GAME}/TicTacToe
+ipconfig (get your ip address)
+notepad player1.py (replace your IPv4) -> crtl+s
 python player1.py
 ```
-
-## Client (player2)
+- On Linux
 
 ```
-git clone https://github.com/baseboy1102002/sgu_ossd_tictactoe.git
+cd ~/{YOUR_PATH_TO_GAME}/TicTacToe
+hostname -I (get your ip address)
+vim player1.py (replace your IPv4) -> :wq (save file)
+python3 player1.py
+```
+
+#### Run the Client (player2)
+
+- On Windows
+```
+cd ~/{YOUR_PATH_TO_GAME}/TicTacToe
 python player2.py
 ```
 
-# Synchronization
-
-Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. 
-
-There are two types of synchronization and they can complement each other:
-
-- The workspace synchronization will sync all your files.
-- The workspace synchronization will sync all your files.
-- The workspace synchronization will sync all your files.
-	> To start syncing your workspace, just sign in with Google in the menu.
-
-Synchronization is one of the biggest features of StackEdit
-> Before starting to sync files, you must link an account in the **Synchronize** sub-menu.
-
-
-# Publication
-
-Publishing in StackEdit makes it simple for you to publish online your files. With [Handlebars templates](http://handlebarsjs.com/), you have full control over what you export.
-
-> Before starting to publish, you must link an account in the **Publish** sub-menu.
-
-
-## UML diagrams
-
-You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
-
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
+- On Linux
+```
+cd ~/{YOUR_PATH_TO_GAME}/TicTacToe
+python3 player2.py
 ```
 
-And this will produce a flow chart:
+## Gameplay
+- **Player1**
+![Player1's screen](https://baseboy1102002.github.io/sgu_ossd_tictactoe-web/assets/imgs/tictactoe%20p1.jpg)
 
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```
+- **Player2**
+![Player1's screen](https://baseboy1102002.github.io/sgu_ossd_tictactoe-web/assets/imgs/tictactoe%20p2.jpg)
